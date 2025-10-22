@@ -1,0 +1,4 @@
+node_modules
+.env
+./src/models 
+src/python/venv

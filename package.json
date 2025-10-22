@@ -1,0 +1,24 @@
+{
+  "name": "simple-llm-node",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "repository": "https://github.com/lamloi1109/simple-llm-node.git",
+  "author": "lamloi1109 <lamloi12a1@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "ingest": "node src/server.js --ingest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.913.0",
+    "@langchain/aws": "^1.0.0",
+    "@langchain/community": "^1.0.0",
+    "@langchain/core": "^1.0.1",
+    "@langchain/ollama": "^1.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "langchain": "^1.0.1",
+    "ollama": "^0.6.0"
+  }
+}

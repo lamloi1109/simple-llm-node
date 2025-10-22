@@ -13,3 +13,17 @@ simple-llm-node/
 ├─ .env.example
 ├─ package.json
 └─ README.md
+
+
+ollama run MODEL
+ollama run EmbeddingModel
+
+yarn add
+yarn run ingest
+yarn run dev
+
+python -m venv venv
+.\venv\Scripts\activate   # Trên Windows
+pip install gradio
+
+python app.py
