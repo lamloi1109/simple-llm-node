@@ -73,9 +73,13 @@ OLLAMA_EMBED_MODEL=nomic-embed-text # hoặc bge-m3, mxbai-embed-large, ...<br /
 
 # --------- BEDROCK ---------
 BEDROCK_REGION=us-east-1
-BEDROCK_CHAT_MODEL=anthropic.claude-3-5-sonnet-20241022-v2:0
-BEDROCK_EMBED_MODEL=amazon.titan-embed-text-v2:0
-AWS_PROFILE=default                 # nếu dùng profile cục bộ
+BEDROCK_CHAT_MODEL=anthropic.claude-3-haiku-20240307-v1:0
+BEDROCK_EMBED_MODEL=amazon.titan-embed-text-v1
+# BEDROCK_MAX_TOKENS=1024           # tuỳ chọn: giới hạn token đầu ra
+# BEDROCK_TEMPERATURE=0.7           # tuỳ chọn: điều chỉnh nhiệt độ
+# BEDROCK_SYSTEM_PROMPT="Bạn là trợ lý hữu ích" # tuỳ chọn: system prompt
+# AWS_PROFILE=default               # nếu dùng profile cục bộ (~/.aws/credentials)
+# AWS_SDK_LOAD_CONFIG=1             # cần bật khi dùng profile
 
 # --------- APP / RAG --------
 PORT=3000<br />
@@ -87,14 +91,13 @@ TOP_K=5<br />
 
 
 Gợi ý embedding đa ngôn ngữ (Ollama): bge-m3, multilingual-e5-large (nếu có), hoặc nomic-embed-text (tổng quát, nhanh).
-Bedrock: titan-embed-text-v2 là lựa chọn cân bằng cho đa ngôn ngữ phổ biến.
+Bedrock: titan-embed-text-v1/v2 là lựa chọn cân bằng cho đa ngôn ngữ phổ biến.
 
 Scripts tiện dụng (trong package.json)
-{
+{ 
   "scripts": {
     "dev": "node src/server.js",
-    "ingest": "node src/rag.js --ingest",
-    "ask": "node src/rag.js --ask"
+    "ingest": "node src/server.js --ingest"
   }
 }
 
@@ -102,8 +105,6 @@ Scripts tiện dụng (trong package.json)
 yarn run ingest → đọc DOCS_DIR, cắt đoạn, tạo vector, lưu EMBEDDINGS_PATH
 
 yarn run dev → mở REST API
-
-yarn run ask → hỏi nhanh qua CLI (tuỳ chọn, nếu bạn thêm flag --q "...")
 
 Cách hoạt động (RAG pipeline)
 
