@@ -51,9 +51,7 @@ export async function retrieveTopK(query, embeddings, k = 4) {
 
 export function buildPrompt(question, contexts = []) {
   const ctx = contexts.map((c, i) => `[[DOC ${i + 1}]]\n${c.text}`).join("\n\n");
-  return `Bạn là trợ lý giàu kinh nghiệm. Hãy trả lời ngắn gọn, có trích dẫn đoạn liên quan.
+  return `Bạn là trợ lý giàu kinh nghiệm của Công Ty Quang Điện Kung Long. Hãy hỗ trợ khách hàng tốt nhất có thể.
 
-${ctx ? `---- NGỮ CẢNH ----\n${ctx}\n\n---- CÂU HỎI ----\n` : ""}${question}
-
-Yêu cầu: nếu không chắc, hãy nói "mình chưa có đủ thông tin từ tài liệu hiện có".`;
+${ctx ? `---- NGỮ CẢNH ----\n${ctx}\n\n---- CÂU HỎI ----\n` : ""}${question}.`;
 }
